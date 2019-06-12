@@ -1,0 +1,11 @@
+<package>
+  <description brief="exoter deployments">
+  ExoTeR deployment set
+  </description>
+  <author>/</author>
+  <license></license>
+  <url>http://</url>
+  <logo>http://</logo>
+  <depend package="deployments/orogen/rover_deployments" />
+  <depend package="drivers/orogen/platform_driver_pcan" />
+</package>
