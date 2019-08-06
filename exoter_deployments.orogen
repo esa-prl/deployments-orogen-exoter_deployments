@@ -1,4 +1,4 @@
-name "hdpr_deployments"
+name "exoter_deployments"
 
 # Sensors
 using_task_library 'imu_stim300'
@@ -11,7 +11,6 @@ using_task_library 'locomotion_control'
 using_task_library 'wheelwalking_control'
 using_task_library 'locomotion_switcher'
 using_task_library 'controldev'
-using_task_library 'ptu_directedperception'
 
 # Control
 using_task_library 'ptu_control'
@@ -23,13 +22,12 @@ using_task_library 'waypoint_navigation'
 using_task_library 'threed_odometry'
 
 deployment 'control' do
-    task("platform_driver_hdpr", "platform_driver_pcan::Hdpr")
+    task("platform_driver_exoter", "platform_driver_pcan::Exoter")
     task("locomotion_control", "locomotion_control::Task")
     task("read_joint_dispatcher", "joint_dispatcher::Task")
     task("command_joint_dispatcher", "joint_dispatcher::Task")
     task("motion_translator", "motion_translator::Task")
     task("joystick", "controldev::JoystickTask")
-    task("ptu_directedperception", "ptu_directedperception::Task")
     task("ptu_control", "ptu_control::Task")
     task("wheel_walking_control", "wheelwalking_control::Task")
     task("locomotion_switcher", "locomotion_switcher::Task")
@@ -37,12 +35,11 @@ deployment 'control' do
 end
 
 deployment "unit_following" do
-    task("platform_driver_hdpr", "platform_driver_pcan::Hdpr").periodic(0.08)
+    task("platform_driver_exoter", "platform_driver_pcan::Exoter").periodic(0.08)
     task("locomotion_control", "locomotion_control::Task")
     task("read_joint_dispatcher", "joint_dispatcher::Task")
     task("command_joint_dispatcher", "joint_dispatcher::Task")
     task("motion_translator", "motion_translator::Task")
-    task("ptu_directedperception", "ptu_directedperception::Task")
     task("ptu_control", "ptu_control::Task")
     task("joystick", "controldev::JoystickTask")
     task("vicon", "vicon::Task").periodic(0.1)
@@ -54,7 +51,7 @@ end
 
 deployment "unit_odometry" do
     task("imu_stim300", "imu_stim300::Task")
-    task("platform_driver_hdpr", "platform_driver_pcan::Hdpr")
+    task("platform_driver_exoter", "platform_driver_pcan::Exoter")
     task("read_joint_dispatcher", "joint_dispatcher::Task")
     task("threed_odometry", "threed_odometry::Task")
     add_default_logger
