@@ -20,6 +20,7 @@ using_task_library 'waypoint_navigation'
 
 # Other
 using_task_library 'threed_odometry'
+using_task_library 'localization_frontend'
 
 deployment 'control' do
     task("platform_driver_exoter", "platform_driver_pcan::Exoter")
@@ -54,6 +55,7 @@ deployment "unit_odometry" do
     task("platform_driver_exoter", "platform_driver_pcan::Exoter")
     task("read_joint_dispatcher", "joint_dispatcher::Task")
     task("threed_odometry", "threed_odometry::Task")
+    task("localization_frontend", "localization_frontend::Task")
     add_default_logger
 end
 
