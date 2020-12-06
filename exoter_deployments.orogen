@@ -20,6 +20,7 @@ using_task_library 'waypoint_navigation'
 
 # Other
 using_task_library 'threed_odometry'
+using_task_library 'localization_frontend'
 
 deployment 'control' do
     task("platform_driver_exoter", "platform_driver_pcan::Exoter")
